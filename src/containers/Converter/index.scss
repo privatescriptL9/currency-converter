@@ -1,0 +1,73 @@
+.Converter {
+  &__title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    text-align: center;
+  }
+
+  &__body {
+    margin: 50px 0 0 -15%;
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+
+    span {
+      font-size: 20px;
+      line-height: 23px;
+      color: #000000;
+    }
+
+    select {
+      background: #ffffff;
+      border: 1px solid #000000;
+      width: 150px;
+      height: 35px;
+      padding: 6px 15px;
+    }
+
+    input {
+      background: #ffffff;
+      border: 1px solid #000000;
+      width: 150px;
+      height: 35px;
+      padding: 6px 15px;
+    }
+  }
+
+  &__body-row-2 {
+    align-self: flex-end;
+    margin-right: 13%;
+  }
+
+  &__input-to {
+    margin-left: 33px;
+  }
+
+  &__footer {
+    margin: 50px 0 0 25%;
+    font-size: 20px;
+    line-height: 23px;
+    color: rgba(0, 0, 0, 0.37);
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    transition: color 0.2s ease-in-out;
+
+    &::after {
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.37);
+      content: '';
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &:hover {
+      color: rgba(0, 0, 0, 0.57);
+    }
+  }
+}

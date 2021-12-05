@@ -1,0 +1,20 @@
+.ExchangeCard {
+  width: 200px;
+  height: 200px;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid black;
+  word-wrap: break-word;
+  position: relative;
+
+  &__buy {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
+  &__char-code {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+}

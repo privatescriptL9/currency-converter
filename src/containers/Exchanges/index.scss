@@ -1,0 +1,20 @@
+.Exchanges {
+  margin-bottom: 1rem;
+  &__title {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  &__cards {
+    min-width: 1000px;
+  }
+}
+
+.rec-dot_active {
+  background-color: #00000065!important;
+  box-shadow: 0 0 1px 3px #00000065!important;
+}
