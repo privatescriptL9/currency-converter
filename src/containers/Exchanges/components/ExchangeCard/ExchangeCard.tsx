@@ -5,18 +5,29 @@ export interface ExchangeCardProps {
   Name: string
   Value: number
   CharCode: string
+  Previous: number
+  Nominal: number
 }
 
 const ExchangeCard: React.FC<ExchangeCardProps> = ({
   Name,
   Value,
-  CharCode
+  CharCode,
+  Previous,
+  Nominal
 }) => {
   return (
     <div className="ExchangeCard">
       <div className="ExchangeCard__char-code">{CharCode}</div>
       <div>{Name}</div>
-      <div className="ExchangeCard__buy">Купить: {Value.toFixed(2) + ' ₽'}</div>
+      {Previous !== Nominal && (
+        <div className="ExchangeCard__previous">
+          {(Previous / Nominal).toFixed(2) + ' ₽'}
+        </div>
+      )}
+      <div className="ExchangeCard__current">
+        Купить: {(Value / Nominal).toFixed(2) + ' ₽'}
+      </div>
     </div>
   )
 }
