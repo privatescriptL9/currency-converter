@@ -7,10 +7,19 @@
   word-wrap: break-word;
   position: relative;
 
-  &__buy {
+  &__current {
     position: absolute;
     bottom: 1.5rem;
     left: 1.5rem;
+  }
+
+  &__previous {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 6rem;
+    font-size: 0.8rem;
+    color: red;
+    text-decoration: line-through;
   }
 
   &__char-code {

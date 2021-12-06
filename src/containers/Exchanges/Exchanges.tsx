@@ -39,6 +39,8 @@ const Exchanges: React.FC = () => {
             CharCode={exchange.CharCode}
             Name={exchange.Name}
             Value={exchange.Value}
+            Nominal={exchange.Nominal}
+            Previous={exchange.Previous}
           />
         ))}
       </Carousel>
