@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useCallback,
-  useRef,
-  useMemo,
-} from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios'
 import './index.scss'
 
@@ -24,8 +18,7 @@ const Converter: React.FC = () => {
   const [currency, setCurrency] = useState<any[]>()
   const [selectFrom, setSelectFrom] = useState<any>()
   const [selectTo, setSelectTo] = useState<any>()
-  const [convertedValue, setConvertedValue] =
-    useState<any>('')
+  const [convertedValue, setConvertedValue] = useState<any>('')
 
   const [inputValueTo, setInputValueTo] = useState<any>()
 
@@ -47,15 +40,14 @@ const Converter: React.FC = () => {
   }, [])
 
   const convertCurr = useCallback(
-    (e?: any) => {
+    (e: any) => {
       const selectFromValue = JSON.parse(selectFrom)
       const selectToValue = JSON.parse(selectTo)
 
       setInputValueTo(e.target.value)
 
       const convertedValue = Number(
-        ((selectFromValue.Value / selectFromValue.Nominal) *
-          e.target.value) /
+        ((selectFromValue.Value / selectFromValue.Nominal) * e.target.value) /
           (selectToValue.Value / selectToValue.Nominal)
       ).toFixed(2)
 
@@ -65,6 +57,10 @@ const Converter: React.FC = () => {
   )
 
   const changeCurr = useCallback(() => {
+    if (!inputValueTo) {
+      return
+    }
+
     const intermediateValue = selectFrom
     setSelectFrom(selectTo)
     setSelectTo(intermediateValue)
@@ -73,8 +69,7 @@ const Converter: React.FC = () => {
     const selectToValue = JSON.parse(intermediateValue)
 
     const convertedValue = Number(
-      ((selectFromValue.Value / selectFromValue.Nominal) *
-        inputValueTo) /
+      ((selectFromValue.Value / selectFromValue.Nominal) * inputValueTo) /
         (selectToValue.Value / selectToValue.Nominal)
     ).toFixed(2)
 
@@ -89,8 +84,7 @@ const Converter: React.FC = () => {
       const selectToValue = JSON.parse(selectTo)
 
       const convertedValue = Number(
-        ((selectFromValue.Value / selectFromValue.Nominal) *
-          inputValueTo) /
+        ((selectFromValue.Value / selectFromValue.Nominal) * inputValueTo) /
           (selectToValue.Value / selectToValue.Nominal)
       ).toFixed(2)
 
@@ -107,8 +101,7 @@ const Converter: React.FC = () => {
       const selectToValue = JSON.parse(e.target.value)
 
       const convertedValue = Number(
-        ((selectFromValue.Value / selectFromValue.Nominal) *
-          inputValueTo) /
+        ((selectFromValue.Value / selectFromValue.Nominal) * inputValueTo) /
           (selectToValue.Value / selectToValue.Nominal)
       ).toFixed(2)
 
@@ -118,20 +111,19 @@ const Converter: React.FC = () => {
   )
 
   return (
-    <div className='Converter'>
-      <h1 className='Converter__title'>Конвертер валют</h1>
-      <div className='Converter__body'>
-        <div className='Converter__body-row-1'>
+    <div className="Converter">
+      <h1 className="Converter__title">Конвертер валют</h1>
+      <div className="Converter__body">
+        <div className="Converter__body-row-1">
           <span>Вы переводите из &nbsp;</span>
           <select
-            className='Converter__select-from'
+            className="Converter__select-from"
             onChange={handleChangeFromCurr}
-            value={selectFrom}>
+            value={selectFrom}
+          >
             {currency?.map((item: TOptions) => {
               return (
-                <option
-                  key={item.Value}
-                  value={JSON.stringify(item)}>
+                <option key={item.Value} value={JSON.stringify(item)}>
                   {item.CharCode} ({item.Name})
                 </option>
               )
@@ -139,37 +131,34 @@ const Converter: React.FC = () => {
           </select>
           <span>&nbsp; в &nbsp;</span>
           <select
-            className='Converter__select-to'
+            className="Converter__select-to"
             onChange={handleChangeToCurr}
-            value={selectTo}>
+            value={selectTo}
+          >
             {currency?.map((item: TOptions) => {
               return (
-                <option
-                  key={item.Value}
-                  value={JSON.stringify(item)}>
+                <option key={item.Value} value={JSON.stringify(item)}>
                   {item.CharCode} ({item.Name})
                 </option>
               )
             })}
           </select>
         </div>
-        <div className='Converter__body-row-2'>
+        <div className="Converter__body-row-2">
           <input
-            type='text'
-            className='Converter__input-from'
+            type="text"
+            className="Converter__input-from"
             onChange={convertCurr}
           />
           <input
-            type='text'
-            className='Converter__input-to'
+            type="text"
+            className="Converter__input-to"
             disabled={true}
             value={convertedValue}
           />
         </div>
       </div>
-      <div
-        className='Converter__footer'
-        onClick={changeCurr}>
+      <div className="Converter__footer" onClick={changeCurr}>
         поменять валюты местами
       </div>
     </div>
